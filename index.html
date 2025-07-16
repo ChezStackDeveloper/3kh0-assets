@@ -3,47 +3,46 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Gryo – FAQ</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"/>
+  <title>Gyro</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
   <style>
     :root {
-      --bg: #0b0b0d;
-      --card-bg: rgba(255, 255, 255, 0.05);
-      --border: rgba(245, 198, 115, 0.4);
+      --bg-dark: #0e0e0e;
+      --card-bg: #1a1a1a;
+      --text-color: #f4f4f4;
       --accent: #f5c673;
-      --text: #ffffff;
-      --radius: 20px;
-      --glass-blur: blur(12px);
+      --overlay-bg: rgba(0, 0, 0, 0.5);
+      --radius: 18px;
     }
 
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
+      font-family: 'Roboto', sans-serif;
     }
 
     body {
-      background: var(--bg);
-      color: var(--text);
+      background-color: var(--bg-dark);
+      color: var(--text-color);
       padding-top: 100px;
     }
 
+    /* Navbar */
     nav {
       position: fixed;
       top: 20px;
       left: 50%;
       transform: translateX(-50%);
-      background: rgba(30, 30, 30, 0.9);
+      background: #1b1b1b;
       padding: 16px 36px;
       border-radius: var(--radius);
       display: flex;
       align-items: center;
       gap: 30px;
-      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.7);
-      backdrop-filter: var(--glass-blur);
-      z-index: 1000;
-      transition: all 0.3s ease;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+      z-index: 999;
+      transition: transform 0.3s ease;
     }
 
     nav:hover {
@@ -51,96 +50,78 @@
     }
 
     .logo {
-      font-size: 1.5rem;
-      font-weight: 700;
+      font-size: 1.4rem;
+      font-weight: bold;
       color: var(--accent);
       margin-right: auto;
     }
 
     nav a {
-      color: var(--text);
+      color: var(--text-color);
       text-decoration: none;
       font-weight: 500;
-      transition: color 0.3s ease;
+      transition: color 0.3s;
     }
 
     nav a:hover {
       color: var(--accent);
     }
 
-    .faq-container {
-      max-width: 900px;
-      margin: 60px auto;
-      padding: 20px;
+    /* Game grid */
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      padding: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
-    .faq-title {
-      font-size: 2rem;
-      text-align: center;
-      margin-bottom: 40px;
-      font-weight: 600;
-      color: var(--accent);
-    }
-
-    .faq {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
+    .game-card {
+      background-color: var(--card-bg);
       border-radius: var(--radius);
-      padding: 20px 24px;
-      margin-bottom: 20px;
-      backdrop-filter: var(--glass-blur);
-      transition: 0.3s ease;
-      cursor: pointer;
-    }
-
-    .faq:hover {
-      border-color: var(--accent);
-      box-shadow: 0 0 20px rgba(245, 198, 115, 0.2);
-    }
-
-    .faq-question {
-      font-size: 1.1rem;
-      font-weight: 600;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .faq-answer {
-      max-height: 0;
       overflow: hidden;
-      transition: max-height 0.4s ease;
-      margin-top: 10px;
-      font-weight: 400;
-      opacity: 0.8;
+      position: relative;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 0 14px rgba(0, 0, 0, 0.3);
     }
 
-    .faq.active .faq-answer {
-      max-height: 500px;
+    .game-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.5);
     }
 
-    .faq.active .arrow {
-      transform: rotate(180deg);
+    .game-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      display: block;
     }
 
-    .arrow {
-      transition: transform 0.3s ease;
+    .overlay {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      background: var(--overlay-bg);
+      color: #fff;
+      padding: 12px;
+      text-align: center;
+      font-weight: 500;
+      font-size: 1.1rem;
+      backdrop-filter: blur(4px);
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 600px) {
       nav {
         flex-wrap: wrap;
+        gap: 16px;
         padding: 14px 24px;
       }
-
       .logo {
         width: 100%;
         text-align: center;
-        margin-bottom: 10px;
-      }
-
-      .faq-title {
-        font-size: 1.6rem;
+        margin-right: 0;
       }
     }
   </style>
@@ -148,62 +129,27 @@
 <body>
 
   <nav>
-    <div class="logo">Gryo</div>
-    <a href="index.html">Home</a>
-    <a href="games.html">Games</a>
-    <a href="plans.html">Plans</a>
-    <a href="faq.html">FAQ</a>
+    <div class="logo">Gyro</div>
+    <a href="#">Home</a>
+    <a href="#">Games</a>
+    <a href="#">About</a>
   </nav>
 
-  <div class="faq-container">
-    <div class="faq-title">Frequently Asked Questions</div>
-
-    <div class="faq" onclick="toggleFAQ(this)">
-      <div class="faq-question">
-        How do I play games on Gryo?
-        <span class="arrow">▼</span>
-      </div>
-      <div class="faq-answer">
-        Just click on any game card on the homepage. No login or download required — it launches instantly in your browser.
-      </div>
+  <div class="container">
+    <div class="game-card" onclick="window.location.href='game1.html'">
+      <img src="https://via.placeholder.com/400x200?text=Game+1" alt="Game 1">
+      <div class="overlay">Cool Math Runner</div>
     </div>
-
-    <div class="faq" onclick="toggleFAQ(this)">
-      <div class="faq-question">
-        Is Gryo free to use?
-        <span class="arrow">▼</span>
-      </div>
-      <div class="faq-answer">
-        Yes! Gryo offers free access to basic games. You can unlock premium features with our Plus or Pro plans.
-      </div>
+    <div class="game-card" onclick="window.location.href='game2.html'">
+      <img src="https://via.placeholder.com/400x200?text=Game+2" alt="Game 2">
+      <div class="overlay">Tunnel Escape</div>
     </div>
-
-    <div class="faq" onclick="toggleFAQ(this)">
-      <div class="faq-question">
-        Can I use Gryo at school?
-        <span class="arrow">▼</span>
-      </div>
-      <div class="faq-answer">
-        Absolutely. Gryo is designed to be school-friendly and lightweight for classroom environments.
-      </div>
+    <div class="game-card" onclick="window.location.href='game3.html'">
+      <img src="https://via.placeholder.com/400x200?text=Game+3" alt="Game 3">
+      <div class="overlay">Space Dodger</div>
     </div>
-
-    <div class="faq" onclick="toggleFAQ(this)">
-      <div class="faq-question">
-        What is included in the Pro School plan?
-        <span class="arrow">▼</span>
-      </div>
-      <div class="faq-answer">
-        The Pro School plan offers unlimited access, custom branding, and a license tailored for school-wide deployment.
-      </div>
-    </div>
+    <!-- Add more games as needed -->
   </div>
-
-  <script>
-    function toggleFAQ(faq) {
-      faq.classList.toggle("active");
-    }
-  </script>
 
 </body>
 </html>
