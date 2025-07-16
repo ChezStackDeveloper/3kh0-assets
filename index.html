@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gryo – FAQ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg: #0b0b0d;
+      --card-bg: rgba(255, 255, 255, 0.05);
+      --border: rgba(245, 198, 115, 0.4);
+      --accent: #f5c673;
+      --text: #ffffff;
+      --radius: 20px;
+      --glass-blur: blur(12px);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      padding-top: 100px;
+    }
+
+    nav {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(30, 30, 30, 0.9);
+      padding: 16px 36px;
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.7);
+      backdrop-filter: var(--glass-blur);
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+
+    nav:hover {
+      transform: translateX(-50%) scale(1.02);
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-right: auto;
+    }
+
+    nav a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    .faq-container {
+      max-width: 900px;
+      margin: 60px auto;
+      padding: 20px;
+    }
+
+    .faq-title {
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 40px;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    .faq {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      margin-bottom: 20px;
+      backdrop-filter: var(--glass-blur);
+      transition: 0.3s ease;
+      cursor: pointer;
+    }
+
+    .faq:hover {
+      border-color: var(--accent);
+      box-shadow: 0 0 20px rgba(245, 198, 115, 0.2);
+    }
+
+    .faq-question {
+      font-size: 1.1rem;
+      font-weight: 600;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+      margin-top: 10px;
+      font-weight: 400;
+      opacity: 0.8;
+    }
+
+    .faq.active .faq-answer {
+      max-height: 500px;
+    }
+
+    .faq.active .arrow {
+      transform: rotate(180deg);
+    }
+
+    .arrow {
+      transition: transform 0.3s ease;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        flex-wrap: wrap;
+        padding: 14px 24px;
+      }
+
+      .logo {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 10px;
+      }
+
+      .faq-title {
+        font-size: 1.6rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">Gryo</div>
+    <a href="index.html">Home</a>
+    <a href="games.html">Games</a>
+    <a href="plans.html">Plans</a>
+    <a href="faq.html">FAQ</a>
+  </nav>
+
+  <div class="faq-container">
+    <div class="faq-title">Frequently Asked Questions</div>
+
+    <div class="faq" onclick="toggleFAQ(this)">
+      <div class="faq-question">
+        How do I play games on Gryo?
+        <span class="arrow">▼</span>
+      </div>
+      <div class="faq-answer">
+        Just click on any game card on the homepage. No login or download required — it launches instantly in your browser.
+      </div>
+    </div>
+
+    <div class="faq" onclick="toggleFAQ(this)">
+      <div class="faq-question">
+        Is Gryo free to use?
+        <span class="arrow">▼</span>
+      </div>
+      <div class="faq-answer">
+        Yes! Gryo offers free access to basic games. You can unlock premium features with our Plus or Pro plans.
+      </div>
+    </div>
+
+    <div class="faq" onclick="toggleFAQ(this)">
+      <div class="faq-question">
+        Can I use Gryo at school?
+        <span class="arrow">▼</span>
+      </div>
+      <div class="faq-answer">
+        Absolutely. Gryo is designed to be school-friendly and lightweight for classroom environments.
+      </div>
+    </div>
+
+    <div class="faq" onclick="toggleFAQ(this)">
+      <div class="faq-question">
+        What is included in the Pro School plan?
+        <span class="arrow">▼</span>
+      </div>
+      <div class="faq-answer">
+        The Pro School plan offers unlimited access, custom branding, and a license tailored for school-wide deployment.
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleFAQ(faq) {
+      faq.classList.toggle("active");
+    }
+  </script>
+
+</body>
+</html>
